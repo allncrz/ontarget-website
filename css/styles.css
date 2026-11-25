@@ -211,3 +211,21 @@ body.intro-ready .hero-copy.reveal {opacity:1!important;transform:none!important
 /* Quote CTA: no logo; content and button share the available width */
 .cta .cta-layout{grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:center}
 @media(max-width:700px){.cta .cta-layout{grid-template-columns:1fr;gap:22px}.cta .cta-layout>.btn{justify-self:start}}
+
+/* Compact floating mobile navigation */
+@media(max-width:700px){
+.site-header{z-index:200!important}.site-header .nav-wrap{height:68px}.site-header .brand{width:185px;max-width:calc(100% - 65px)}
+.site-header .menu-toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:10px;border:1px solid #dce9df;border-radius:11px;background:#f6faf7;z-index:202}
+.site-header .menu-toggle span{width:23px;height:2px;flex:none;background:#10231b!important;border-radius:2px;transition:transform .25s,opacity .2s}
+.site-header .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(7px) rotate(45deg)}
+.site-header .menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0}
+.site-header .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+.site-header .nav-links{display:flex!important;position:absolute;top:calc(100% + 8px);left:17px;right:17px;width:auto;z-index:201;padding:10px;gap:3px;align-items:stretch;flex-direction:column;background:white!important;border:1px solid #e2ede5;border-radius:15px;box-shadow:0 20px 45px #001b1733!important;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px);transition:opacity .22s,transform .22s,visibility .22s}
+.site-header .nav-links.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.site-header .nav-links>a:not(.btn){display:flex;align-items:center;min-height:45px;padding:12px 16px!important;border-radius:9px;box-shadow:none!important;font-size:14px}
+.site-header .nav-links>a.active{background:#eaffdf;color:#218e0a!important}.site-header .nav-links>a:not(.btn):hover{background:#f0f9ec}
+.mobile-nav-backdrop{position:fixed;inset:68px 0 0;z-index:190;background:#00150d66;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s,visibility .22s}
+.mobile-nav-backdrop.is-open{opacity:1;visibility:visible;pointer-events:auto}
+}
+@media(min-width:701px){.mobile-nav-backdrop{display:none}}
+@media(prefers-reduced-motion:reduce){.site-header .nav-links,.site-header .menu-toggle span,.mobile-nav-backdrop{transition:none!important}}
